@@ -24,8 +24,8 @@
 var billItemTypeWithSettings = document.querySelector(".billItemTypeWithSettings");
 
 //reference for settings fields
-var callTotalTwoElement = document.querySelector(".callTotalSettings");
-var smsTotalTwoElement = document.querySelector(".smsTotalSettings");
+var callTotalSettingsElem = document.querySelector(".callTotalSettings");
+var smsTotalSettingsElem = document.querySelector(".smsTotalSettings");
 var totalSettings = document.querySelector(".totalSettings");
 
 //add button reference
@@ -42,8 +42,8 @@ var criticalLevelSetting = document.querySelector(".criticalLevelSetting");
 
 //var totalSettings = document.querySelector(".totalSettings");
 
-var callsTotal = 0;
-var smsTotal = 0;
+var callsTotalOne = 0;
+var smsTotalOne = 0;
 var totalCost = 0;
 
 var callCost = 0;
@@ -63,15 +63,15 @@ function addToBillBtnClicked() {
 
             if (billTypeEntered === "call") {
 
-                callsTotal += callCost;
+                callsTotalOne += callCost;
             }
             else if (billTypeEntered === "sms") {
-                smsTotal += smsCost;
+                smsTotalOne += smsCost;
             }
         }
-        callTotalTwoElement.innerHTML = callsTotal.toFixed(2);
-        smsTotalTwoElement.innerHTML = smsTotal.toFixed(2);
-        totalCost = callsTotal + smsTotal;
+        callTotalSettingsElem.innerHTML = callsTotalOne.toFixed(2);
+        smsTotalSettingsElem.innerHTML = smsTotalOne.toFixed(2);
+        totalCost = callsTotalOne + smsTotalOne;
         totalSettings.innerHTML = totalCost.toFixed(2);
         colour()
 

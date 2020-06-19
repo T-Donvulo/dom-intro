@@ -73,12 +73,12 @@ function addToBillBtnClicked() {
         smsTotalSettingsElem.innerHTML = smsTotalOne.toFixed(2);
         totalCost = callsTotalOne + smsTotalOne;
         totalSettings.innerHTML = totalCost.toFixed(2);
-        colour()
+        //colour()
 
     }
 
 }
-function colour() {
+/*function colour() {
 
     //color the total based on the criteria
     totalSettings.classList.remove("danger");
@@ -92,7 +92,7 @@ function colour() {
         totalSettings.classList.remove("warning");
         totalSettings.classList.add("danger");
     }
-}
+}*/
 
 //update the totals that is displayed on the screen.
 
@@ -103,7 +103,7 @@ function updateSettingsClicked() {
     critical = Number(criticalLevelSetting.value);
     warning = Number(warningLevelSetting.value);
 
-    colour()
+    //colour()
 
 }
 

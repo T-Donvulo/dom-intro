@@ -9,7 +9,7 @@ describe("The bill with setting factory function", function() {
         settingsBill2.setCallCost(2.75);
         assert.equal(2.75, settingsBill2.getCallCost());
     });
-        it("should be able to set a sms cost", function(){
+        it("should be able to set the sms cost", function(){
             let settingsBill = BillWithSettings();
             settingsBill.setSmsCost(0.85);
             assert.equal(0.85, settingsBill.getSmsCost());
@@ -70,3 +70,104 @@ describe("The bill with setting factory function", function() {
             
         });    
 });
+describe("use, values", function(){ 
+    it("should be able to use the call cost set", function(){
+        let settingsBill = BillWithSettings();
+
+        settingsBill.setCallCost(2.25);
+        settingsBill.setSmsCost(0.85);
+
+        settingsBill.makeCall();
+        settingsBill.makeCall();
+        settingsBill.makeCall();
+
+        assert.equal(0.00, settingsBill.getTotalCost());
+        assert.equal(0.00, settingsBill.getTotalCallCost());
+        assert.equal(0.00, settingsBill.getTotalSmsCost());
+
+    });
+
+    it("should be able to use the call cost set for 2 calls at 1.35 each", function(){
+        let settingsBill = BillWithSettings();
+
+        settingsBill.setCallCost(1.35);
+        settingsBill.setSmsCost(0.85);
+
+        settingsBill.makeCall();
+        settingsBill.makeCall();
+
+        assert.equal(0.00, settingsBill.getTotalCost());
+        assert.equal(0.00, settingsBill.getTotalCallCost());
+        assert.equal(0.00, settingsBill.getTotalSmsCost());
+
+    });
+
+    it("should be able to send 2 sms's at 0.85 each", function(){
+        let settingsBill = BillWithSettings();
+
+        settingsBill.setCallCost(1.35);
+        settingsBill.setSmsCost(0.85);
+
+        settingsBill.sendSms();
+        settingsBill.sendSms();
+
+        assert.equal(1.70, settingsBill.getTotalCost());
+        assert.equal(0.00, settingsBill.getTotalCallCost());
+        assert.equal(1.70, settingsBill.getTotalSmsCost());
+    });
+
+    it("should be able to send 2 sms's at 0.85 and make 1 call at 1.35", function(){
+        let settingsBill = BillWithSettings();
+
+        settingsBill.setCallCost(1.35);
+        settingsBill.setSmsCost(0.85);
+
+        settingsBill.sendSms();
+        settingsBill.sendCall();
+        settingsBill.sendSms();
+
+        assert.equal(3.05, settingsBill.getTotalCost());
+        assert.equal(1.35, settingsBill.getTotalCallCost());
+        assert.equal(1.70, settingsBill.getTotalSmsCost());
+    });
+
+describe("warning & critical level", function(){
+    it("it should return a class name of 'warning' if warning level is reached", function(){
+        let settingsBill = BillWithSettings();
+
+        settingsBill.setCallCost(1.35);
+        settingsBill.setSmsCost(0.85);
+        settingsBill.setWarningLevel(5);
+        settingsBill.setCriticalLevel(10);
+
+
+        settingsBill.sendSms();
+        settingsBill.sendCall();
+        settingsBill.sendSms();
+
+        assert.equal( settingsBill.totalClassName());
+    });
+
+    it("it should return a class name of 'critical' if critical level is reached", function(){
+        let settingsBill = BillWithSettings();
+
+        settingsBill.setCallCost(2.50);
+        settingsBill.setSmsCost(0.85);
+
+        settingsBill.setWarningLevel(10);
+
+        settingsBill.sendSms();
+        settingsBill.sendCall();
+        settingsBill.sendSms();
+
+        assert.equal("critical", settingsBill.totalClassName());
+    });
+
+
+});
+
+
+
+});
+
+//my tests

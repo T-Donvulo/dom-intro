@@ -76,7 +76,7 @@ describe("use, values", function(){
 
         settingsBill.setCallCost(2.25);
         settingsBill.setSmsCost(0.85);
-        settingsBill.setCriticalLevel(10);
+        //settingsBill.setCriticalLevel(10);
 
         settingsBill.makeCall();
         settingsBill.makeCall();
@@ -84,10 +84,9 @@ describe("use, values", function(){
         settingsBill.sendSms();
         settingsBill.sendSms();
 
-       alert(settingsBill.getTotalCallCost())
         assert.equal(6.75, settingsBill.getTotalCallCost());
         assert.equal(1.70, settingsBill.getTotalSmsCost());
-        assert.equal(6.75, settingsBill.getTotalCost());
+        assert.equal(8.45, settingsBill.getTotalCost());
         
 
     });
@@ -129,8 +128,8 @@ describe("use, values", function(){
         settingsBill.setSmsCost(0.85);
 
         settingsBill.sendSms();
-        settingsBill.sendCall();
         settingsBill.sendSms();
+        settingsBill.makeCall();
 
         assert.equal(3.05, settingsBill.getTotalCost());
         assert.equal(1.35, settingsBill.getTotalCallCost());
@@ -147,7 +146,7 @@ describe("warning & critical level", function(){
         settingsBill.setCriticalLevel(10);
 
         settingsBill.sendSms();
-        settingsBill.sendCall();
+        settingsBill.makeCall();
         settingsBill.sendSms();
 
         assert.equal( settingsBill.totalClassName());
@@ -162,7 +161,7 @@ describe("warning & critical level", function(){
         settingsBill.setCriticalLevel(10);
 
         settingsBill.sendSms();
-        settingsBill.sendCall();
+        settingsBill.makeCall();
         settingsBill.sendSms();
 
         assert.equal( settingsBill.totalClassName());

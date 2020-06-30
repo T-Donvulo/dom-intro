@@ -21,15 +21,18 @@ function getSmsCost() {
 }
 
 function makeCall(){
-    if(!getCriticalLevel()){
-    callCostTotal += theCallCost;
-}
+    if(!checkCriticalLevel()){
+        callCostTotal += theCallCost;
+    }
 }
 
 function sendSms(){
-    if(!getCriticalLevel()){
-    smsCostTotal += theSmsCost;
-}
+    if(!checkCriticalLevel()){
+        
+        smsCostTotal += theSmsCost;
+        
+
+    }
 }
 
 function getGrandTotal(){
@@ -60,6 +63,7 @@ function getCriticalLevel(){
 function getTotalCost(){
     return callCostTotal + smsCostTotal;
 }
+
 function getTotalCallCost(){
     return callCostTotal;
 }
@@ -69,13 +73,16 @@ function getTotalSmsCost(){
 
 function totalClassName(){
 
-    if (getTotalCallCost() >= getWarningLevel()){
-        return "warning"
-    }
-
-    if (getTotalCallCost() >= getCriticalLevel()){
+    if (getTotalCost() >= getCriticalLevel()){
         return "critical"
     }
+
+   
+
+    if (getTotalCost() >= getWarningLevel()){
+        return "warning"
+    }
+    
 
 }
 

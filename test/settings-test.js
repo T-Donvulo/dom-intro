@@ -76,7 +76,7 @@ describe("use, values", function(){
 
         settingsBill.setCallCost(2.25);
         settingsBill.setSmsCost(0.85);
-        //settingsBill.setCriticalLevel(10);
+        settingsBill.setCriticalLevel(10);
 
         settingsBill.makeCall();
         settingsBill.makeCall();
@@ -96,6 +96,7 @@ describe("use, values", function(){
 
         settingsBill.setCallCost(1.35);
         settingsBill.setSmsCost(0.85);
+        settingsBill.setCriticalLevel(10);
 
         settingsBill.makeCall();
         settingsBill.makeCall();
@@ -112,6 +113,7 @@ describe("use, values", function(){
 
         settingsBill.setCallCost(1.35);
         settingsBill.setSmsCost(0.85);
+        settingsBill.setCriticalLevel(10);
 
         settingsBill.sendSms();
         settingsBill.sendSms();
@@ -126,6 +128,7 @@ describe("use, values", function(){
 
         settingsBill.setCallCost(1.35);
         settingsBill.setSmsCost(0.85);
+        settingsBill.setCriticalLevel(10);
 
         settingsBill.sendSms();
         settingsBill.sendSms();
@@ -134,6 +137,7 @@ describe("use, values", function(){
         assert.equal(3.05, settingsBill.getTotalCost());
         assert.equal(1.35, settingsBill.getTotalCallCost());
         assert.equal(1.70, settingsBill.getTotalSmsCost());
+
     });
 
 describe("warning & critical level", function(){
@@ -145,11 +149,17 @@ describe("warning & critical level", function(){
         settingsBill.setWarningLevel(5);
         settingsBill.setCriticalLevel(10);
 
-        settingsBill.sendSms();
+        // settingsBill.sendSms();
         settingsBill.makeCall();
-        settingsBill.sendSms();
+        settingsBill.makeCall();
+        settingsBill.makeCall();
+        settingsBill.makeCall();
 
-        assert.equal( settingsBill.totalClassName());
+        // settingsBill.sendSms();
+        
+        // assert.equal( 0, settingsBill.getTotalCost());
+
+        assert.equal( "critical", settingsBill.totalClassName());
     });
 
     it("it should return a class name of 'warning' if warning level is reached", function(){
@@ -162,9 +172,13 @@ describe("warning & critical level", function(){
 
         settingsBill.sendSms();
         settingsBill.makeCall();
+        settingsBill.makeCall();
         settingsBill.sendSms();
-
-        assert.equal( settingsBill.totalClassName());
+        settingsBill.sendSms();
+        settingsBill.sendSms();
+        settingsBill.sendSms();
+        
+        assert.equal("warning" ,settingsBill.totalClassName());
     });
 
 

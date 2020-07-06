@@ -3,7 +3,7 @@ describe("The radio factory function", function(){
     it("should be able to set call cost", function(){
 
         let radiobill = billRadio();
-        radiobill.setCallCost(1.85); 
+        radiobill.setCallCost(); 
         assert.equal(1.85, radiobill.getCallCost());
 
     });
@@ -12,7 +12,7 @@ describe("The radio factory function", function(){
 
         let radiobill = billRadio();
         
-        radiobill.setSmsCost(0.75);
+        radiobill.setSmsCost();
         assert.equal(0.75, radiobill.getSmsCost());
 
     });
@@ -20,8 +20,8 @@ describe("The radio factory function", function(){
     it("should be able to set sms and call cost", function(){
         let radiobill = billRadio();
 
-        radiobill.setCallCost(1.85);
-        radiobill.setSmsCost(0.75);
+        radiobill.setCallCost();
+        radiobill.setSmsCost();
 
         assert.equal(1.85, radiobill.getCallCost())
         assert.equal(0.75, radiobill.getSmsCost());
@@ -31,29 +31,50 @@ describe("The radio factory function", function(){
     it("should be able to set warning", function(){
         let radiobill= billRadio();
     
-        radiobill.setWarningLevel(25);
-        radiobill.getWarningLevel(25);
+        radiobill.setWarningLevel();
+        radiobill.getWarningLevel();
     
         });
 
     it( "should be able to set critical",function(){
         let radiobill = billRadio();
 
-        radiobill.setCriticalLevel(35);
-        radiobill.getCriticalLevel(35);
+        radiobill.setCriticalLevel();
+        radiobill.getCriticalLevel();
 
     });
 
     it( "should be able to set warning and critical",function(){
         let radiobill = billRadio();
 
-        radiobill.setCriticalLevel(35);
-        radiobill.setWarningLevel(25);
+        radiobill.setCriticalLevel();
+        radiobill.setWarningLevel();
 
-        radiobill.getCriticalLevel(35);
-        radiobill.setWarningLevel(25);
+        radiobill.getCriticalLevel();
+        radiobill.setWarningLevel();
 
     });
+
+describe("Use, Values", function(){
+    it("Should be able to use Call cost set", function(){
+        let radiobill = billRadio();
+
+        radiobill.setCallCost();
+        radiobill.setSmsCost();
+        radiobill.setCriticalLevel();
+    
+        radiobill.makeCall();
+        radiobill.makeCall();
+        radiobill.makeCall();
+        radiobill.sendSms();
+        radiobill.sendSms();
+    
+            assert.equal(5.55, radiobill.getTotalCallCost().toFixed(2));
+            assert.equal(1.50, radiobill.getTotalSmsCost());
+            assert.equal(7.05, radiobill.getTotalCost().toFixed(2));
+    })
+   
+});    
 
     
 

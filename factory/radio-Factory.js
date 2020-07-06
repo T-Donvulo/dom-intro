@@ -4,35 +4,83 @@ function billRadio(){
     var theWarningLevel = 0;
     var theCriticalLevel = 0;
 
-function setCallCost(callCost){
-    theCallCost = callCost;
+    var callCostTotal = 0;
+    var smsCostTotal = 0;
+
+function setCallCost(){
+    return theCallCost = 1.85;
 }
 function getCallCost(){
     return theCallCost;
 }
 
-function setSmsCost(smsCost){
-    theSmsCost = smsCost;
+function setSmsCost(){
+    theSmsCost = 0.75;
 }
 function getSmsCost(){
     return theSmsCost;
 }
 
-function setWarningLevel(warningLevel){
-    theWarningLevel = warningLevel;
+function setWarningLevel(){
+    theWarningLevel = 25;
 
 }
 function getWarningLevel(){
     return theWarningLevel;
 }
 
-function setCriticalLevel(critaclLevel){
-    theCriticalLevel = critaclLevel;
+function setCriticalLevel(){
+    theCriticalLevel = 35;
 }
 function getCriticalLevel(){
     return theCriticalLevel;
 }
 
+function makeCall(){
+    if(!checkCriticalLevel()){
+        callCostTotal += theCallCost;
+    }
+}
+
+function sendSms(){
+    if(!checkCriticalLevel()){
+        
+        smsCostTotal += theSmsCost;
+    }
+}
+
+function getGrandTotal(){
+ return callCostTotal + smsCostTotal
+
+}
+
+function checkCriticalLevel(){
+    return getTotalCallCost() >= getCriticalLevel();
+}
+
+function getTotalCost(){
+    return callCostTotal + smsCostTotal;
+}
+
+function getTotalCallCost(){
+    return callCostTotal;
+}
+function getTotalSmsCost(){
+    return smsCostTotal;
+}
+
+function totalClassName(){
+
+    if (getTotalCost() >= getCriticalLevel()){
+        return "critical"
+    }
+
+
+
+    if (getTotalCost() >= getWarningLevel()){
+        return "warning"
+    }
+}
 
 return {
     setCallCost,
@@ -42,7 +90,15 @@ return {
     setWarningLevel,
     getWarningLevel,
     setCriticalLevel,
-    getCriticalLevel
+    getCriticalLevel,
+    makeCall,
+    sendSms,
+    getGrandTotal,
+    getTotalSmsCost,
+    getTotalCallCost,
+    totalClassName,
+    getTotalCost
+
 }
 
 }

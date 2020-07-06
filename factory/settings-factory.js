@@ -36,7 +36,7 @@ function sendSms(){
 }
 
 function getGrandTotal(){
- return callCostTotal + smsCostTotal
+ return callCostTotal + smsCostTotal;
 
 }
 

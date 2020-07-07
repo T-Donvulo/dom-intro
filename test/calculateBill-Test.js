@@ -1,51 +1,6 @@
-describe("The calculate bill factory function", function(){
+describe("The Calculate bill", function(){
+    it("It should return a string total, when a string is entered", function(){
 
-    
-
-    
-    it("should be able to set sms cost set", function(){
-
-        let calculateBill = billCalculate();
-        
-        calculateBill.setSmsCost(0.75);
-        assert.equal(0.75, calculateBill.getSmsCost());
-
+        assert.equal(5.50, totalPhoneBill("call, call"));
     });
-
-   
-
-    it("should be able to set warning", function(){
-        let calculateBill= billCalculate();
-    
-        calculateBill.setWarningLevel();
-        calculateBill.getWarningLevel();
-    
-        });
-
-    it( "should be able to set critical",function(){
-        let calculateBill = billCalculate();
-
-        calculateBill.setCriticalLevel();
-        calculateBill.getCriticalLevel();
-
-    });
-
-    it( "should be able to set warning and critical",function(){
-        let calculateBill = billCalculate();
-
-        calculateBill.setCriticalLevel();
-        calculateBill.setWarningLevel();
-
-        calculateBill.getCriticalLevel();
-        calculateBill.setWarningLevel();
-
-    });
-
-
-   
-});    
-
-    
-
-
-
+});

@@ -26,7 +26,7 @@ else if (billTypeEntered === "sms") {
 } */
 
 
-console.log(textInputBill.totalClassName())
+//console.log(textInputBill.totalClassName())
 //update the totals that is displayed on the screen.
 totalOneSpanElement.classList.add(textInputBill.totalClassName());
 

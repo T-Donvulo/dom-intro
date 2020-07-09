@@ -97,8 +97,6 @@ function TextInputBill() {
     }
    
 
-
-
     return {
         
         getCallCost,

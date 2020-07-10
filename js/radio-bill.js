@@ -16,9 +16,11 @@ var callTotalTwoElement = document.querySelector(".callTotalTwo");
 var smsTotalTwoElement = document.querySelector(".smsTotalTwo");
 var totalTwoSpanElement = document.querySelector(".totalTwo");
 
-var callsTotalTwo = 0;
-var smsTotalTwo = 0;
-var totalCostTwo = 0;
+// callsTotalTwo = 0;
+// smsTotalTwo = 0;
+// totalCostTwo = 0;
+
+const billRadio = billRadio();
 
 function addToBillBtnClicked() {
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
@@ -33,12 +35,13 @@ function addToBillBtnClicked() {
 
     // update the correct total
  
-     if (billTypeEntered === "call") {
-        callsTotalTwo += 2.75;
-    }
-    else if (billTypeEntered === "sms") {
-        smsTotalTwo += 0.75;
-    }
+   //  if (billTypeEntered === "call") {
+     //   callsTotalTwo += 2.75;
+    //}
+    //else if (billTypeEntered === "sms") {
+      //  smsTotalTwo += 0.75;
+    //}
+    
     }
     //update the totals that is displayed on the screen.
 

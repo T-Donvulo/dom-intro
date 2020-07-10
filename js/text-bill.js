@@ -13,6 +13,7 @@ const textInputBill = TextInputBill(); /*inviting factory function in dom, after
 function textBillTotal() {
 
     var billType = billTextElement.value.trim();
+    
     //textInputBill.billTypeEntered(billTypeEntered);
     
     textInputBill.billTypeEntered(billType);
@@ -28,13 +29,13 @@ else if (billTypeEntered === "sms") {
 
 //console.log(textInputBill.totalClassName())
 //update the totals that is displayed on the screen.
-totalOneSpanElement.classList.add(textInputBill.totalClassName());
+
 
 callTotalOneElement.innerHTML = textInputBill.getTotalCallCost().toFixed(2);
 smsTotalOneElement.innerHTML = textInputBill.getTotalSmsCost().toFixed(2);
 totalOneSpanElement.innerHTML = textInputBill.getTotalCost().toFixed(2);
 
-
+totalOneSpanElement.classList.add(textInputBill.totalClassName());
 //color the total based on the criteria
 //totalOneSpanElement.classList.remove("danger");
 //totalOneSpanElement.classList.remove("warning");

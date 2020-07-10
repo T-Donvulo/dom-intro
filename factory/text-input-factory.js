@@ -57,11 +57,10 @@ function TextInputBill() {
     }
 
     function checkCriticalLevel() {
-        return getTotalCallCost() >= setCriticalLevel();
+        return getTotalCallCost() >= theCriticalLevel;
     }
     function getCriticalLevel() {
         return theCriticalLevel;
-
     }
 
     function makeCall() {
@@ -86,15 +85,27 @@ function TextInputBill() {
 
     function totalClassName() {
 
-        if (checkCriticalLevel()) {
-            return "critical"
+        if (getTotalCost() >= 50) {
+            return "danger";
+             //adding the danger class will make the text red
+            }
+             else if (getTotalCost() >= 30 && getTotalCost() < 50) {
+                 //totalOneSpanElement.classList.add("warning");
+                 return "warning"
+             }
+
+        /*if (getTotalCost() > 50) {
+            return "critical";
         }
 
-        if (getWarningLevel()) {
-            return "warning"
+        if (getTotalCost() > 30) {
+            return "warning";
         }
+        return "";*/
 
     }
+
+    
    
 
     return {

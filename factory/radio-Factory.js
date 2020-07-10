@@ -7,16 +7,16 @@ function billRadio(){
     var callCostTotal = 0;
     var smsCostTotal = 0;
 
-function setCallCost(){
-    return theCallCost = 1.85;
-}
+//function setCallCost(){
+  //  return theCallCost = 1.85;
+//}
 function getCallCost(){
     return theCallCost;
 }
 
-function setSmsCost(){
-    theSmsCost = 0.75;
-}
+//function setSmsCost(){
+  //  theSmsCost = 0.75;
+//}
 function getSmsCost(){
     return theSmsCost;
 }

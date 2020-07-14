@@ -6,7 +6,7 @@ const billStringField = document.querySelector(".billString");
 
 const billTotalSpanElement = document.querySelector(".total");
 
-function totalPhoneBill(billString) {
+/*function totalPhoneBill(billString) {
 
   var billItems = billString.split(",");
 
@@ -23,7 +23,9 @@ function totalPhoneBill(billString) {
   }
   var roundedBillTotal = billTotal.toFixed(2);
   return roundedBillTotal;
-}
+}*/
+// totalPhoneBill("call,sms")
+
 function styleTotalColor(roundedBillTotal) {
   const currentTotal = Number(roundedBillTotal);
   billTotalSpanElement.classList.remove("danger");

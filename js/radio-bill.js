@@ -20,13 +20,14 @@ var totalTwoSpanElement = document.querySelector(".totalTwo");
 // smsTotalTwo = 0;
 // totalCostTwo = 0;
 
-const billRadio = billRadio();
+const billRadio = BillRadio();
 
 function addToBillBtnClicked() {
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
      
     if (checkedRadioBtn){
     var billTypeEntered = checkedRadioBtn.value;
+    billRadio.callsSms(billTypeEntered);
     // billItemType will be 'call' or 'sms'
   
   
@@ -35,32 +36,27 @@ function addToBillBtnClicked() {
 
     // update the correct total
  
-   //  if (billTypeEntered === "call") {
-     //   callsTotalTwo += 2.75;
-    //}
-    //else if (billTypeEntered === "sms") {
-      //  smsTotalTwo += 0.75;
-    //}
+ 
     
     }
     //update the totals that is displayed on the screen.
 
-    callTotalTwoElement.innerHTML = callsTotalTwo.toFixed(2);
-    smsTotalTwoElement.innerHTML = smsTotalTwo.toFixed(2);
-    totalCostTwo = callsTotalTwo + smsTotalTwo;
-    totalTwoSpanElement.innerHTML = totalCostTwo.toFixed(2);
+    callTotalTwoElement.innerHTML = billRadio.getTotalCallCost().toFixed(2);
+    smsTotalTwoElement.innerHTML = billRadio.getTotalSmsCost().toFixed(2);
+   // totalCostTwo = callsTotalTwo + smsTotalTwo;
+    totalTwoSpanElement.innerHTML = billRadio.getGrandTotal().toFixed(2);
 
     
     //color the total based on the criteria
     totalTwoSpanElement.classList.remove("danger");
     totalTwoSpanElement.classList.remove("warning");
-    if (totalCostTwo >= 50) {
+    //if (totalCostTwo >= 50) {
         // adding the danger class will make the text red
-        totalTwoSpanElement.classList.add("danger");
+        totalTwoSpanElement.classList.add(billRadio.totalClassName());
     }
-    else if (totalCostTwo >= 30 && totalCost < 50) {
-        totalTwoSpanElement.classList.add("warning");
-    }
-}
+    //else if (totalCostTwo >= 30 && totalCost < 50) {
+       // totalTwoSpanElement.classList.add("warning");
+  //  }
+//}
 
 addToBillBtnElement.addEventListener("click", addToBillBtnClicked);

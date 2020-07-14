@@ -1,8 +1,6 @@
 function totalPhoneBill(billString) {
-
+  var billTotal = 0;
     var billItems = billString.split(",");
-  
-    var billTotal = 0;
   
     for (var i = 0; i < billItems.length; i++) {
       var billItem = billItems[i].trim();
@@ -13,8 +11,9 @@ function totalPhoneBill(billString) {
         billTotal += 0.75;
       }
     }
-    var roundedBillTotal = billTotal.toFixed(2);
-    return roundedBillTotal;
+    //var roundedBillTotal = billTotal.toFixed(2);
+   // return roundedBillTotal;
+   return billTotal;
 
 
   }

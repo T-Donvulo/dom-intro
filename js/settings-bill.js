@@ -58,8 +58,8 @@ function updateSettingsClicked() {
 
     billWithSetting.setCallCost(Number(callCostSettings.value));
     billWithSetting.setSmsCost1(Number(smsCostSettings.value));
-    billWithSetting.setWarningLevel(Number(criticalLevelSetting.value));
-    billWithSetting.setCriticalLevel(Number(warningLevelSetting.value));
+    billWithSetting.setWarningLevel(Number(warningLevelSetting.value));
+    billWithSetting.setCriticalLevel(Number(criticalLevelSetting.value));
 
 colour()
 

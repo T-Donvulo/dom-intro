@@ -19,17 +19,6 @@ function BillWithSettings() {
         theSmsCost = smsCost;
     }
 
-    // function grandTotal(){
-    //     if (billTypeEntered === "call") {
-
-    //         callsTotalOne += callCost;
-    //     }
-    //     else if (billTypeEntered === "sms") {
-    //         smsTotalOne += smsCost;
-    //     }
-
-    // }
-
 
     function getSmsCost() {
         return theSmsCost;
@@ -65,7 +54,7 @@ function BillWithSettings() {
     }
 
     function checkCriticalLevel() {
-        return getTotalCallCost() >= getCriticalLevel();
+        return getTotalCost() >= getCriticalLevel();
     }
     function getCriticalLevel() {
         return theCriticalLevel;
@@ -86,8 +75,8 @@ function BillWithSettings() {
 
     function totalClassName() {
 
-       if (getGrandTotal() >= getCriticalLevel()) {
-           return "danger";
+        if (getGrandTotal() >= getCriticalLevel()) {
+            return "danger";
         }
 
         if (getGrandTotal() >= getWarningLevel()) {

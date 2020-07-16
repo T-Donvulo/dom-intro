@@ -165,7 +165,7 @@ describe("warning & critical level", function(){
         
         // assert.equal( 0, settingsBill.getTotalCost());
 
-        assert.equal( "critical", settingsBill.totalClassName());
+        assert.equal( "danger", settingsBill.totalClassName());
     });
 
     it("it should return a class name of 'warning' if warning level is reached", function(){

@@ -12,12 +12,11 @@ function TextInputBill() {
     //}
     function billTypeEntered(billType) {
         if (billType === "call") {
-            callCostTotal += 2.75
+            theCallCost += 2.75
         }
         else if (billType === "sms") {
-            smsCostTotal += 0.75;
+            theSmsCost += 0.75;
         }
-
     }
     
     function getCallCost() {
@@ -79,7 +78,7 @@ function TextInputBill() {
     }
 
     function getGrandTotal() {
-        return callCostTotal + smsCostTotal
+        return getCallCost() + getSmsCost();
 
     }
 
@@ -91,7 +90,7 @@ function TextInputBill() {
             }
              else if (getTotalCost() >= 30 && getTotalCost() < 50) {
                  //totalOneSpanElement.classList.add("warning");
-                 return "warning"
+                 return "warning";
              }
 
         /*if (getTotalCost() > 50) {

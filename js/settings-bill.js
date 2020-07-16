@@ -42,70 +42,78 @@ var criticalLevelSetting = document.querySelector(".criticalLevelSetting");
 
 //var totalSettings = document.querySelector(".totalSettings");
 
-var callsTotalOne = 0;
-var smsTotalOne = 0;
-var totalCost = 0;
+// var callsTotalOne = 0;
+// var smsTotalOne = 0;
+// var totalCost = 0;
 
-var callCost = 0;
-var smsCost = 0;
-var critical = 0;
-var warning = 0;
+// var callCost = 0;
+// var smsCost = 0;
+// var critical = 0;
+// var warning = 0; commenting out the global variables first, then invite factory function with it's function name using instance
 
+const billWithSetting = BillWithSettings();
 
-function addToBillBtnClicked() {
-    //alert("call")
-    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-    //console.log(checkedRadioBtn)
-    if (checkedRadioBtn) {
-    if (totalCost < critical) {
-        
-            var billTypeEntered = checkedRadioBtn.value;
-
-            if (billTypeEntered === "call") {
-
-                callsTotalOne += callCost;
-            }
-            else if (billTypeEntered === "sms") {
-                smsTotalOne += smsCost;
-            }
-        }
-        callTotalSettingsElem.innerHTML = callsTotalOne.toFixed(2);
-        smsTotalSettingsElem.innerHTML = smsTotalOne.toFixed(2);
-        totalCost = callsTotalOne + smsTotalOne;
-        totalSettings.innerHTML = totalCost.toFixed(2);
-        //colour()
-
-    }
-
-}
-/*function colour() {
-
-    //color the total based on the criteria
-    totalSettings.classList.remove("danger");
-    totalSettings.classList.remove("warning");
-    if (totalCost >= warning && totalCost < critical) {
-        // adding the danger class will make the text red
-        totalSettings.classList.remove("danger");
-        totalSettings.classList.add("warning");
-    }
-    else if (totalCost >= critical) {
-        totalSettings.classList.remove("warning");
-        totalSettings.classList.add("danger");
-    }
-}*/
-
-//update the totals that is displayed on the screen.
 
 function updateSettingsClicked() {
 
-    callCost = Number(callCostSettings.value);
-    smsCost = Number(smsCostSettings.value);
-    critical = Number(criticalLevelSetting.value);
-    warning = Number(warningLevelSetting.value);
+    billWithSetting.setCallCost(Number(callCostSettings.value));
+    billWithSetting.setSmsCost1(Number(smsCostSettings.value));
+    billWithSetting.setWarningLevel(Number(criticalLevelSetting.value));
+    billWithSetting.setCriticalLevel(Number(warningLevelSetting.value));
 
-    //colour()
+colour()
 
 }
+
+
+function addToBillBtnClicked() {
+  
+    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+    
+     if (checkedRadioBtn) {
+    // if (totalCost < critical) {
+    //     billWithSetting.grandTotal(billItemTypeElement);
+        
+            var billTypeEntered = checkedRadioBtn.value;
+       
+            if(billTypeEntered === "call"){
+                billWithSetting.makeCall();
+
+            }
+            if (billTypeEntered === "sms"){
+                billWithSetting.sendSms();
+            }
+            callTotalSettingsElem.innerHTML = billWithSetting.getTotalCallCost().toFixed(2);
+            smsTotalSettingsElem.innerHTML = billWithSetting.getTotalSmsCost().toFixed(2);
+           // totalCost = callsTotalOne + smsTotalOne;
+            totalSettings.innerHTML = billWithSetting.getGrandTotal().toFixed(2);
+            colour()
+    
+            // if (billTypeEntered === "call") {
+
+            //     callsTotalOne += callCost;
+            // }
+            // else if (billTypeEntered === "sms") {
+            //     smsTotalOne += smsCost;
+            // }
+        }
+
+     }
+
+// }
+function colour() {
+
+    
+    totalSettings.classList.remove("danger");
+    totalSettings.classList.remove("warning");
+    totalSettings.classList.add(billWithSetting.totalClassName())
+}
+
+//update the totals that is displayed on the screen.
+
+
+
+
 
 addToBillBtnElement.addEventListener("click", addToBillBtnClicked);
 updateSettings.addEventListener("click", updateSettingsClicked);

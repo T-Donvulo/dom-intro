@@ -2,39 +2,47 @@ describe("The bill with setting factory function", function() {
 
     it("should be able to set the call cost", function(){
         let settingsBill = BillWithSettings();
-        settingsBill.setCallCost(1.85);
-        assert.equal(1.85, settingsBill.getCallCost());
+       settingsBill.setCallCost(1);
+        settingsBill.setSmsCost1(5);
+        settingsBill.setWarningLevel(5);
+        settingsBill.setCriticalLevel(10);
+        settingsBill.sendSms();
+        settingsBill.makeCall();
+        assert.equal(6, settingsBill.getGrandTotal());
 
-        let settingsBill2 = BillWithSettings();
-        settingsBill2.setCallCost(2.75);
-        assert.equal(2.75, settingsBill2.getCallCost());
+
+        // let settingsBill2 = BillWithSettings();
+        // settingsBill2.grandTotal(2.75);
+        // assert.equal(2.75, settingsBill2.getCallCost());
     });
         it("should be able to set the sms cost", function(){
             let settingsBill = BillWithSettings();
-            settingsBill.setSmsCost(0.85);
+            //settingsBill.grandTotal(0.85);
+            settingsBill.setSmsCost1(0.85);
+            
             assert.equal(0.85, settingsBill.getSmsCost());
     
-            let settingsBill2 = BillWithSettings();
-            settingsBill2.setSmsCost(0.75);
-            assert.equal(0.75, settingsBill2.getSmsCost());   
+            // let settingsBill2 = BillWithSettings();
+            // settingsBill2.grandTotal(0.75);
+            // assert.equal(0.75, settingsBill2.getSmsCost());   
         });    
 
         it("should be able to set a call and sms cost", function(){
             let settingsBill = BillWithSettings();
 
             settingsBill.setCallCost(2.75);
-            settingsBill.setSmsCost(0.85);
+            settingsBill.setSmsCost1(0.85);
 
             assert.equal(0.85, settingsBill.getSmsCost());
             assert.equal(2.75, settingsBill.getCallCost());
 
-            let settingsBill2 = BillWithSettings();
+           // let settingsBill2 = BillWithSettings();
 
-            settingsBill2.setCallCost(1.75);
-            settingsBill2.setSmsCost(0.65);
+            //settingsBill2.setCallCost(1.75);
+            //settingsBill2.se(0.65);
 
-            assert.equal(0.65, settingsBill2.getSmsCost());
-            assert.equal(1.75, settingsBill2.getCallCost());
+            //assert.equal(0.65, settingsBill2.getSmsCost());
+            //assert.equal(1.75, settingsBill2.getCallCost());
             
         });    
 
@@ -43,9 +51,7 @@ describe("The bill with setting factory function", function() {
 
             settingsBill.setWarningLevel(20);
 
-            assert.equal(20, settingsBill.getWarningLevel());
-        
-            
+            assert.equal(20, settingsBill.getWarningLevel());      
         });    
 
         it("should be able to set a Critical level cost", function(){
@@ -75,7 +81,7 @@ describe("use, values", function(){
         let settingsBill = BillWithSettings();
 
         settingsBill.setCallCost(2.25);
-        settingsBill.setSmsCost(0.85);
+        settingsBill.setSmsCost1(0.85);
         settingsBill.setCriticalLevel(10);
 
         settingsBill.makeCall();
@@ -95,7 +101,7 @@ describe("use, values", function(){
         let settingsBill = BillWithSettings();
 
         settingsBill.setCallCost(1.35);
-        settingsBill.setSmsCost(0.85);
+        settingsBill.setSmsCost1(0.85);
         settingsBill.setCriticalLevel(10);
 
         settingsBill.makeCall();
@@ -112,7 +118,7 @@ describe("use, values", function(){
         let settingsBill = BillWithSettings();
 
         settingsBill.setCallCost(1.35);
-        settingsBill.setSmsCost(0.85);
+        settingsBill.setSmsCost1(0.85);
         settingsBill.setCriticalLevel(10);
 
         settingsBill.sendSms();
@@ -127,7 +133,7 @@ describe("use, values", function(){
         let settingsBill = BillWithSettings();
 
         settingsBill.setCallCost(1.35);
-        settingsBill.setSmsCost(0.85);
+        settingsBill.setSmsCost1(0.85);
         settingsBill.setCriticalLevel(10);
 
         settingsBill.sendSms();
@@ -145,7 +151,7 @@ describe("warning & critical level", function(){
         let settingsBill = BillWithSettings();
 
         settingsBill.setCallCost(2.50);
-        settingsBill.setSmsCost(0.85);
+        settingsBill.setSmsCost1(0.85);
         settingsBill.setWarningLevel(5);
         settingsBill.setCriticalLevel(10);
 
@@ -166,7 +172,7 @@ describe("warning & critical level", function(){
         let settingsBill = BillWithSettings();
 
         settingsBill.setCallCost(1.35);
-        settingsBill.setSmsCost(0.85);
+        settingsBill.setSmsCost1(0.85);
         settingsBill.setWarningLevel(5);
         settingsBill.setCriticalLevel(10);
 

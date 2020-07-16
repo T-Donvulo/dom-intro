@@ -10,23 +10,22 @@ function BillRadio(){
 //function setCallCost(){
   //  return theCallCost = 1.85;
 //}
-function getCallCost(){
-    return theCallCost;
-}
+
 function callsSms(billTypeEntered){
     if (billTypeEntered === "call") {
-        callCostTotal+= 2.75;
+        theCallCost += 2.75;
      }
      else if (billTypeEntered === "sms") {
-        smsCostTotal += 0.75;
+        theSmsCost += 0.75;
      }
 }
 
-//function setSmsCost(){
-  //  theSmsCost = 0.75;
-//}
+function getCallCost(){
+    return theCallCost;
+}
 function getSmsCost(){
-    return theSmsCost;
+    return theSmsCost 
+    ;
 }
 
 function setWarningLevel(){
@@ -58,7 +57,7 @@ function sendSms(){
 }
 
 function getGrandTotal(){
- return callCostTotal + smsCostTotal
+ return getCallCost() + getSmsCost();
 
 }
 

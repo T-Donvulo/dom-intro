@@ -1,22 +1,22 @@
 describe("The text input factory function", function(){
 
     it("Should be able to set call cost", function(){
-        let textInput = textInputBill();
-        textInput.setCallCost();
-        assert.equal(2.75, textInput.getCallCost())
+        let textInput = TextInputBill();
+        textInput.billTypeEntered("call");
+        assert.equal(textInput.getCallCost(), 2.75)
     });
 
     it("Should be able to set sms cost", function(){
-        let textInput = textInputBill();
-        textInput.setSmsCost();
-        assert.equal(0.75, textInput.getSmsCost())
+        let textInput = TextInputBill();
+        textInput.billTypeEntered("sms");
+        assert.equal(textInput.getSmsCost(), 0.75)
     });
 
     it("Should be able to set sms and call", function(){
-        let textInput = textInputBill();
+        let textInput = TextInputBill();
         
-        textInput.setCallCost();
-        textInput.setSmsCost();
+        textInput.billTypeEntered("call");
+        textInput.billTypeEntered("sms");
 
         assert.equal(2.75, textInput.getCallCost());
         assert.equal(0.75, textInput.getSmsCost());
@@ -24,7 +24,7 @@ describe("The text input factory function", function(){
 
     it("Should be able to set warning", function(){
 
-        let textInput = textInputBill();
+        let textInput = TextInputBill();
         textInput.setWarningLevel();
         assert.equal(30, textInput.getWarningLevel());
 
@@ -32,7 +32,7 @@ describe("The text input factory function", function(){
 
     it("Should be able to set critical", function(){
 
-        let textInput = textInputBill();
+        let textInput = TextInputBill();
         textInput.setCriticalLevel();
         assert.equal(50, textInput.getCriticalLevel());
 
@@ -43,10 +43,10 @@ describe("The text input factory function", function(){
 describe("use, values", function(){
     it("Should be able to use Call Cost set",function(){
 
-        let textInput = textInputBill();
+        let textInput = TextInputBill();
 
-        textInput.setCallCost();
-        textInput.setSmsCost();
+        textInput.billTypeEntered("call");
+        textInput.billTypeEntered("sms");
         textInput.setCriticalLevel();
 
         textInput.makeCall();

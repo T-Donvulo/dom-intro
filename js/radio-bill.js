@@ -41,8 +41,8 @@ function addToBillBtnClicked() {
     }
     //update the totals that is displayed on the screen.
 
-    callTotalTwoElement.innerHTML = billRadio.getTotalCallCost().toFixed(2);
-    smsTotalTwoElement.innerHTML = billRadio.getTotalSmsCost().toFixed(2);
+    callTotalTwoElement.innerHTML = billRadio.getCallCost().toFixed(2);
+    smsTotalTwoElement.innerHTML = billRadio.getSmsCost().toFixed(2);
    // totalCostTwo = callsTotalTwo + smsTotalTwo;
     totalTwoSpanElement.innerHTML = billRadio.getGrandTotal().toFixed(2);
 
